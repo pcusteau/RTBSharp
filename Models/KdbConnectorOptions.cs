@@ -16,6 +16,7 @@ namespace RTBSharp.Models
         public string username { get; set; }
         public string password { get; set; }
         public Encoding encoding { get; set; }
+        public bool testmode { get; set; }
            
     }
 }

@@ -106,7 +106,9 @@ namespace RTBSharp.Models
 
         public class Ext2
         {
+            public string consent { get; set; }
             public Consented_Providers_Settings consented_providers_settings { get; set; }
+            public object[] eids { get; set; }
         }
 
         public class Consented_Providers_Settings
