@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30128.74
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RTBSharp", "RTBSharp.csproj", "{55149D61-4646-42F9-A007-0FD12FC132EF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55149D61-4646-42F9-A007-0FD12FC132EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55149D61-4646-42F9-A007-0FD12FC132EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55149D61-4646-42F9-A007-0FD12FC132EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55149D61-4646-42F9-A007-0FD12FC132EF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D4546263-DB88-42F3-BD0B-086356859856}
+	EndGlobalSection
+EndGlobal
