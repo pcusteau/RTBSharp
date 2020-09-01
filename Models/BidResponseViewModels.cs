@@ -2,22 +2,29 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using static RTBSharp.Models.BidResponseExtensions;
 
 namespace RTBSharp.Models.BidResponseViewModels
 {
 
-    public class Response
+    public class BidResponse
     {
         public string id { get; set; }
+        public SeatBid[] seatbid { get; set; }
         public string bidid { get; set; }
         public string cur { get; set; }
-        public Seatbid[] seatbid { get; set; }
+        public string customdata { get; set; }
+        public int nbr { get; set; }
+        public BidResponseExt ext { get; set; }
+
     }
 
-    public class Seatbid
+    public class SeatBid
     {
-        public string seat { get; set; }
         public Bid[] bid { get; set; }
+        public string seat { get; set; }
+        public int group { get; set; }
+        public SeatBidExt ext { get; set; }
     }
 
     public class Bid
@@ -26,16 +33,18 @@ namespace RTBSharp.Models.BidResponseViewModels
         public string impid { get; set; }
         public float price { get; set; }
         public string nurl { get; set; }
-        public string iurl { get; set; }
         public string burl { get; set; }
         public string lurl { get; set; }
         public string adm { get; set; }
-        public string[] adomain { get; set; }
-        public string cid { get; set; }
         public string adid { get; set; }
+        public string[] adomain { get; set; }
         public string bundle { get; set; }
+        public string iurl { get; set; }
+        public string cid { get; set; }
+        public string crid { get; set; }
         public string tactic { get; set; }
         public string cat { get; set; }
+        public int[] attr { get; set; }
         public int api { get; set; }
         public int protocol { get; set; }
         public string gagmediarating { get; set; }
@@ -45,10 +54,9 @@ namespace RTBSharp.Models.BidResponseViewModels
         public int h { get; set; }
         public int wratio { get; set; }
         public int exp { get; set; }
-
-        public string crid { get; set; }
-        public int[] attr { get; set; }
-        public Object ext { get; set; }
+        public BidExt ext { get; set; }
     }
+
+
 
 }

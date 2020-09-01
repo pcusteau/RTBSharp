@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 using qSharp;
 using RTBSharp.Models;
-using static RTBSharp.Models.DisplayViewModels;
+using static RTBSharp.Models.BidRequestViewModels;
 
 
 namespace RTBSharp.Controllers
@@ -20,6 +21,8 @@ namespace RTBSharp.Controllers
 
         private readonly ILogger _logger;
         private readonly KdbConnectorOptions _kdbConnectorOptions;
+        private readonly IConfiguration _configuration;
+
         // made this up - need to get the actual q dictionary specs
         private static readonly string[] BidRequestKeys = new String[] { "userID", "ip", "ua", "devcountry", "devregion", "devcity",
                                                                             "urls", "cat", "pubcat", "bidfloor", "w", "h",
@@ -31,10 +34,12 @@ namespace RTBSharp.Controllers
 
         public RequestController(
             ILogger<RequestController> logger,
-            IOptions<KdbConnectorOptions> kdbConnectorOptions)
+            IConfiguration configuration)
         {
             _logger = logger;
-            _kdbConnectorOptions = kdbConnectorOptions.Value;
+            _configuration = configuration;
+            _kdbConnectorOptions = new KdbConnectorOptions();
+            configuration.GetSection(KdbConnectorOptions.KdbOptions).Bind(_kdbConnectorOptions);
         }
 
 
@@ -54,7 +59,7 @@ namespace RTBSharp.Controllers
             // this is where we may want to check on things like keywords, context, etc...
 
 
-            if(_kdbConnectorOptions.testmode)
+            if(_kdbConnectorOptions.TestMode)
             {
                 // return test bid
                 var bid = new Models.BidResponseViewModels.Bid()
@@ -70,18 +75,18 @@ namespace RTBSharp.Controllers
                     price = 9.55f
                 };
 
-                var seatbid = new Models.BidResponseViewModels.Seatbid()
+                var seatbid = new Models.BidResponseViewModels.SeatBid()
                 {
                     bid = new Models.BidResponseViewModels.Bid[] { bid },
                     seat = "mrpfdseatid"
                 };
 
-                var response = new Models.BidResponseViewModels.Response()
+                var response = new Models.BidResponseViewModels.BidResponse()
                 {
                     bidid = "mrpfd1234567",
                     cur = "USD",
                     id = bidRequest.id,
-                    seatbid = new Models.BidResponseViewModels.Seatbid[] { seatbid }
+                    seatbid = new Models.BidResponseViewModels.SeatBid[] { seatbid }
                 };
 
                 return new JsonResult(response);
@@ -95,11 +100,11 @@ namespace RTBSharp.Controllers
 
 
                 var q = new QBasicConnection(
-                        _kdbConnectorOptions.host,
-                        _kdbConnectorOptions.port,
-                        _kdbConnectorOptions.username,
-                        _kdbConnectorOptions.password,
-                        _kdbConnectorOptions.encoding
+                        _kdbConnectorOptions.Host,
+                        _kdbConnectorOptions.Port,
+                        _kdbConnectorOptions.UserName,
+                        _kdbConnectorOptions.Password,
+                        _kdbConnectorOptions.Encoding
                     );
 
                 try
@@ -127,18 +132,18 @@ namespace RTBSharp.Controllers
                         price = 9.55f
                     };
 
-                    var seatbid = new Models.BidResponseViewModels.Seatbid()
+                    var seatbid = new Models.BidResponseViewModels.SeatBid()
                     {
                         bid = new Models.BidResponseViewModels.Bid[] { bid },
                         seat = "mrpfdseatid"
                     };
 
-                    var response = new Models.BidResponseViewModels.Response()
+                    var response = new Models.BidResponseViewModels.BidResponse()
                     {
                         bidid = "mrpfd1234567",
                         cur = "USD",
                         id = bidRequest.id,
-                        seatbid = new Models.BidResponseViewModels.Seatbid[] { seatbid }
+                        seatbid = new Models.BidResponseViewModels.SeatBid[] { seatbid }
                     };
 
                     return new JsonResult(response);
