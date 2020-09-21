@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RTBSharp.Models
 {
-    public class LiveRampExt
+    public class LiveRampExtensionViewModels
 
     // this is not yet in the RTP2.5 spec but it is used by liveramp to pass in the IDL
     // you'll have to look for id where ext.rtiParner = "idl"

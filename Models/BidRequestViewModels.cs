@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using static RTBSharp.Models.BidRequestExtensions;
+using static RTBSharp.Models.BidRequestExtensionsViewModels;
 
 namespace RTBSharp.Models
 {

@@ -4,7 +4,7 @@ namespace RTBSharp.Models
     // these are extensions to the standard BidRequest objects
     // they often are specific to data vendors and SSPs so may need to be overriden
 {
-    public class BidRequestExtensions
+    public class BidRequestExtensionsViewModels
     {
         public class ImpExt
         {

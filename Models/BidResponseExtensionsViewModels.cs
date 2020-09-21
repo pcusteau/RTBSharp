@@ -1,7 +1,7 @@
 ﻿using System;
 namespace RTBSharp.Models
 {
-    public class BidResponseExtensions
+    public class BidResponseExtensionsViewModels
     {
         public class BidResponseExt
         {
